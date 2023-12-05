@@ -4,17 +4,16 @@ bin=100 #bin size to be used
 hggenome='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/reference/hg38/filtered_hg38-nucleus-noXY.fa.fai' #genome size file
 bw='/storage/coda1/p-fstorici3/0/shared/bw' #location of bigwig files to be used, make sure they have _pos.bw and _neg.bw as extensions
 files='/storage/coda1/p-fstorici3/0/shared/bw/files' #Same file provided
-ref='/storage/coda1/p-fstorici3/0/shared/bw/ref/Izs'
-.bed' #Reference bed file with chr,start,stop
+ref='/storage/coda1/p-fstorici3/0/shared/bw/ref/Izs.bed' #Reference bed file with chr,start,stop
 grouplist='CD4T hESC-H9 HEK283T-WT HEK293T-RNASEH2A-KO-T3-17 HEK293T-RNASEH2A-KO-T3-8' #List of celllines to be visualized, matches the identifiers in files
-out='./output/'
+out='pathto/output/'
 
 ################### DONOT EDIT beyond this point#########################################3
 
 scripts=$(dirname $0)
 source $scripts/Master.sh
 cd $bw
-for group in $groulist; do 
+for group in $grouplist; do 
 deeptoolscen &
 done
 
