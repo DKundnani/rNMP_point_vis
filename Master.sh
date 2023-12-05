@@ -14,11 +14,11 @@ plotProfile -m  $out/${base}_${group}_cen.gz -out $out/${base}_${group}_cen.png 
 
 function separatestrand_vis_nolegend {
 python3 $scripts/Deeptools_sep_all_cellline_TSS_TTS.py '$base_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
-python3 $scripts/Deeptools_sep_all_cellline_TSS_TTS.py '$base_*TTS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
+python3 $scripts/Deeptools_sep_all_cellline_TSS_TTS.py '$base_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
 }
 
 function separatestrand_vis_legend {
 python3 $scripts/Deeptools_sep_all_cellline_TSS_TTS.py '$base_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
-python3 $scripts/Deeptools_sep_all_cellline_TSS_TTS.py '$base_*TTS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
+python3 $scripts/Deeptools_sep_all_cellline_TSS_TTS.py '$base_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
 }
 
