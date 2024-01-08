@@ -70,5 +70,5 @@ if args.sep=='separate':
 else:
     plt.yticks(ticks=[*range(0,ymax+1,y_gap)],labels=list(map(abs,[*range(0,ymax+1,y_gap)])),fontsize=30)
 ax.axhline(1, linestyle='--',color="black", linewidth=0.6)
-plt.xticks(ticks=[0,9,19,29,39,49,59],labels=['-3','-2','-1',type,'1','2','3'],fontsize=22)
+plt.xticks(ticks=[0,9,19,29,39,49,59],labels=['-3','-2','-1',type,'1','2','3'],fontsize=30)
 plt.savefig(f"{out}_all.png",dpi=1000,bbox_inches='tight')
