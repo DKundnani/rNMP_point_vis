@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 import argparse
+import matplotlib
 import matplotlib.pyplot as plt
+plt.rcParams['font.family'] = 'sans-serif'
+plt.rcParams['font.sans-serif'] = 'Arial'
+#print(matplotlib.matplotlib_fname())
 import pandas as pd
 import glob
 import re
@@ -34,6 +38,10 @@ fig = plt.figure(figsize=(4,4))
 ax = fig.add_subplot(111)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
+for axis in ['top','bottom','left','right']:
+    ax.spines[axis].set_linewidth(1.5)
+ax.tick_params(width=1.5)
+
 
 for i in range(0,len(files)):
     #df= pd.read_csv(glob.glob(files[i])[0], sep='\t', header=None)
@@ -58,9 +66,9 @@ for i in range(0,len(files)):
 if args.sep=='separate':
     ax.axhline(0, linestyle='-',color="black", linewidth=0.75)
     ax.axhline(-1, linestyle='--',color="black", linewidth=0.6)
-    plt.yticks(ticks=[*range(-ymax,ymax+1,y_gap)],labels=list(map(abs,[*range(-ymax,ymax+1,y_gap)])),fontsize=22)
+    plt.yticks(ticks=[*range(-ymax,ymax+1,y_gap)],labels=list(map(abs,[*range(-ymax,ymax+1,y_gap)])),fontsize=30)
 else:
-    plt.yticks(ticks=[*range(0,ymax+1,y_gap)],labels=list(map(abs,[*range(0,ymax+1,y_gap)])),fontsize=22)
+    plt.yticks(ticks=[*range(0,ymax+1,y_gap)],labels=list(map(abs,[*range(0,ymax+1,y_gap)])),fontsize=30)
 ax.axhline(1, linestyle='--',color="black", linewidth=0.6)
 plt.xticks(ticks=[0,9,19,29,39,49,59],labels=['-3','-2','-1',type,'1','2','3'],fontsize=22)
 plt.savefig(f"{out}_all.png",dpi=1000,bbox_inches='tight')
