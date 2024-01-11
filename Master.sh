@@ -2,7 +2,6 @@
 
 scripts=${dirname $0}
 
-
 function deeptoolscen {
 samefiles=$(grep $group $files | cut -f3 | sed 's/$/_nucl_pos.bw/g'| tr '\n' ' ')
 oppfiles=$(grep $group $files | cut -f3 | sed 's/$/_nucl_neg.bw/g'| tr '\n' ' ')
@@ -13,12 +12,11 @@ plotProfile -m  $out/${base}_${group}_cen.gz -out $out/${base}_${group}_cen.png 
 }
 
 function separatestrand_vis_nolegend {
-python3 $scripts/sep_strands_allcelltype.py '$base_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
-python3 $scripts/sep_strands_allcelltype.py '$base_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
+python3 $scripts/all_celltypes_vis.py '$base_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
+python3 $scripts/all_celltypes_vis.py '$base_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
 }
 
 function separatestrand_vis_legend {
-python3 $scripts/sep_strands_allcelltype.py '$base_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
-python3 $scripts/sep_strands_allcelltype.py '$base_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
+python3 $scripts/all_celltypes_vis.py '$base_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
+python3 $scripts/all_celltypes_vis.py '$base_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
 }
-
