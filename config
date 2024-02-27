@@ -10,8 +10,6 @@ out='pathto/output/'
 scripts='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/bin/GIT/rNMP_point_vis/'
 
 ################### DONOT EDIT beyond this point#########################################3
-
-scripts=$(dirname $0)
 source $scripts/Master.sh
 cd $bw
 for group in $grouplist; do 
