@@ -6,18 +6,19 @@ bw='/storage/coda1/p-fstorici3/0/shared/bw' #location of bigwig files to be used
 files='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/bin/GIT/rNMP_point_vis/files' #Same file provided
 ref='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/Hu_analysis/anno/standardanno/rep_ori/GSE128477_Core_origins_hg38.bed' #Reference bed file with chr,start,stop
 grouplist='CD4T hESC-H9 HEK283T-WT HEK293T-RNASEH2A-KO-T3-17 HEK293T-RNASEH2A-KO-T3-8' #List of celllines to be visualized, matches the identifiers in files
-out='pathto/output/'
+out='/storage/coda1/p-fstorici3/0/shared/bw/out'
 scripts='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/bin/GIT/rNMP_point_vis/'
 
 ################### DONOT EDIT beyond this point#########################################3
 source $scripts/Master.sh
 cd $bw
-for group in $grouplist; do 
+for group in $grouplist; do
 deeptoolscen &
 done
 
 cd $out
 
-separatestrand_vis_nolegend #Vislualized for all files. 
+separatestrand_vis_nolegend #Vislualized for all files.
+
 
  
