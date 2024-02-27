@@ -1,6 +1,6 @@
 #!usr/bin/env bash
 
-scripts=${dirname $0}
+#scripts=${dirname $0}
 
 function deeptoolscen {
 samefiles=$(grep $group $files | cut -f3 | sed 's/$/_nucl_pos.bw/g'| tr '\n' ' ')
