@@ -1,5 +1,7 @@
 #!usr/bin/env bash
 
+r/bin/env bash
+
 bin=100 #bin size to be used
 hggenome='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/reference/hg38/filtered_hg38-nucleus-noXY.fa.fai' #genome size file
 bw='/storage/coda1/p-fstorici3/0/shared/bw' #location of bigwig files to be used, make sure they have _pos.bw and _neg.bw as extensions
@@ -18,7 +20,7 @@ done
 
 cd $out
 
-separatestrand_vis_nolegend #Vislualized for all files.
+separatestrand_vis_cen #Vislualized for all files.
 
 
  
