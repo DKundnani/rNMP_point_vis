@@ -27,16 +27,16 @@ plotProfile -m  $out/${base}_${type}_cen.gz -out $out/${base}_${type}_cen.png --
 }
 
 function separatestrand_vis_nolegend {
-python3 $scripts/all_celltypes_vis.py ${base}'_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
-python3 $scripts/all_celltypes_vis.py ${base}'_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
+python3 $scripts/all_celltypes_vis.py ${base}'_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate publish
+python3 $scripts/all_celltypes_vis.py ${base}'_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate publish
 }
 
 function separatestrand_vis_legend {
-python3 $scripts/all_celltypes_vis.py ${base}'_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
-python3 $scripts/all_celltypes_vis.py ${base}'_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate
+python3 $scripts/all_celltypes_vis.py ${base}'_*TSS*tab' 4 '3.0Kb' TSS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate publish
+python3 $scripts/all_celltypes_vis.py ${base}'_*TTS*tab' 4 '3.0Kb' TTS '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' legend separate publish
 }
 
 function separatestrand_vis_cen {
-python3 $scripts/all_celltypes_vis.py ${base}'_*cen*tab' 4 '3.0Kb' cntr '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate
+python3 $scripts/all_celltypes_vis.py ${base}'_*cen*tab' 4 '3.0Kb' cntr '#FF7F0E,#D62728,#9467BD,#E377C2,#2CA02C' nolegend separate publish
 }
 
