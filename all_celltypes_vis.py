@@ -48,6 +48,7 @@ ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 for axis in ['top','bottom','left','right']:
     ax.spines[axis].set_linewidth(0.75)
+
 ax.tick_params('both', length=3, width=0.75)
 
 
@@ -62,6 +63,7 @@ for i in range(0,len(files)):
     bins=df.iloc[1,2:(N+3)].tolist()
     bins=[int(float(x)) for x in bins] 
     n=int(float(len(df.iloc[2:,0].tolist())/2))
+    print(files[i],n,'sample')
     if args.sep=='separate':
         ax.plot(bins,(mat.iloc[:n]*2).mean(axis=0).tolist(), color=colors[i],linewidth=0.75)
         if mat.iloc[n][2]<0:
@@ -87,9 +89,11 @@ plt.xticks(ticks=[0,9,19,29,39,49,59],labels=['-3','-2','-1',type,'1','2','3'],f
 if args.publish=='publish':
     # xticks color white
     plt.xticks(color='w')
+    plt.ylim(-ymax-0.5, ymax+0.5)
+    #plt.ylim(-ymax, ymax)
     ax.set_xticklabels([])
     # yticks color white
     plt.yticks(color='w')
     ax.set_yticklabels([])
 
-plt.savefig(f"{out}_all.png",dpi=1000,bbox_inches='tight')
+plt.savefig(f"{out}_{type}_all.svg",format='svg',bbox_inches='tight')

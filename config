@@ -4,23 +4,45 @@ r/bin/env bash
 
 bin=100 #bin size to be used
 hggenome='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/reference/hg38/filtered_hg38-nucleus-noXY.fa.fai' #genome size file
-bw='/storage/coda1/p-fstorici3/0/shared/bw' #location of bigwig files to be used, make sure they have _pos.bw and _neg.bw as extensions
-files='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/bin/GIT/rNMP_point_vis/files' #Same file provided
-ref='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/Hu_analysis/anno/standardanno/rep_ori/GSE128477_Core_origins_hg38.bed' #Reference bed file with chr,start,stop
-grouplist='CD4T hESC-H9 HEK283T-WT HEK293T-RNASEH2A-KO-T3-17 HEK293T-RNASEH2A-KO-T3-8' #List of celllines to be visualized, matches the identifiers in files
-out='/storage/coda1/p-fstorici3/0/shared/bw/out'
+bed='path/to/bedfolder/' #all the .bed files to be processed
+bw='path/to/bwfolder/' #output for bigwig files to be used, make sure you have _pos and _neg bigwig files in separate strands folder for each bed file as output
+files='files' #Same file provided
+ref='range.bed' #Reference bed file with chr,start,stop
+celltypes='CD4T hESC-H9 HEK283T-WT HEK293T-RNASEH2A-KO-T3-17 HEK293T-RNASEH2A-KO-T3-8' #List of celllines to be visualized, matches the identifiers in files
+out=$bw/out #Output folder where all the results will be stored
 scripts='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/bin/GIT/rNMP_point_vis/'
 
-################### DONOT EDIT beyond this point#########################################3
-source $scripts/Master.sh
-cd $bw
-for group in $grouplist; do
-deeptoolscen &
+################### RUN the following as needed #########################################3
+
+#Convert bed to bigwig, please make sure the binz size is correct fo this to give you appropriate results
+mkdir -p $bw
+for file in $(ls $bed/*.bed)
+do
+bash $scripts/bedtoEF.sh $file $hggenome $bin bw
 done
 
+#Preloading functions for Deeptools wrapper scripts
+source $scripts/Master.sh
+#Generate deeptools matrices and profiles for all celltypes at TSS and TTS
+cd $bw
+mkdir -p $out/temp
+mkdir -p $out/tab
+for type in $celltypes; do
+awk 'BEGIN{FS=OFS="\t"} {if($6=="+") {print $1,$2,$3}}' $ref > $out/temp/${base}_pos.bed #Change this ONLY IF strand information in any other than 6th column.
+awk 'BEGIN{FS=OFS="\t"} {if($6=="-") {print $1,$2,$3}}' $ref > $out/temp/${base}_neg.bed #Change this ONLY IF strand information in any other than 6th column.
+deeptoolsref &
+done
+wait
 cd $out
+for type in $celltypes; do separatestrand_vis_legend & done #With legend, only for checking each cell type is assigned correct color
+for type in $celltypes; do separatestrand_vis_nolegend & done #Vislualized for all files present in the output folder. Please clean up unwanted file of create separate output folder with wanted files only
 
-separatestrand_vis_cen #Vislualized for all files.
+#Generate deeptools matrices and profiles for all celltypes at the center point of given ranges
+cd $bw
+for type in $celltypes; do
+deeptoolscen &
+done
+wait
+cd $out
+separatestrand_vis_cen #Vislualized for all files present in the output folder. Please clean up unwanted file of create separate output folder with wanted files only
 
-
- 
