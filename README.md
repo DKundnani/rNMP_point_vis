@@ -63,14 +63,14 @@ git clone https://github.com/DKundnani//rNMP_point_vis.git
 ### Defining variables
 ```bash
 bin=100 #bin size to be used
-hggenome='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/reference/hg38/filtered_hg38-nucleus-noXY.fa.fai' #genome size file
+hggenome='path/to/reference_genome.fa.fai' #genome size file
 bed='path/to/bedfolder/' #all the .bed files to be processed
 bw='path/to/bwfolder/' #output for bigwig files to be used, make sure you have _pos and _neg bigwig files in separate strands folder for each bed file as output
-files='files' #Same file provided
-ref='range.bed' #Reference bed file with chr,start,stop
+files='path/to/files' #Same file provided
+ref='path/to/range.bed' #Reference bed file with chr,start,stop
 celltypes='CD4T hESC-H9 HEK283T-WT HEK293T-RNASEH2A-KO-T3-17 HEK293T-RNASEH2A-KO-T3-8' #List of celllines to be visualized, matches the identifiers in files
 out=$bw/out #Output folder where all the results will be stored
-scripts='/storage/home/hcoda1/5/dkundnani3/p-fstorici3-0/rich_project_bio-storici/bin/GIT/rNMP_point_vis/'
+scripts='path/to/rNMP_point_vis/'
 ```
 ### Preprocessing
 ```bash
