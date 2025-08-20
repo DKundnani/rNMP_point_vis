@@ -3,8 +3,6 @@
 #scripts=${dirname $0}
 
 function deeptoolsref {
-bref=$(basename $ref)
-base="${bref%.*}"
 samefiles=$(grep $type $files | cut -f3 | sed 's/$/_pos.bw/g'| tr '\n' ' ')
 oppfiles=$(grep $type $files | cut -f3 | sed 's/$/_neg.bw/g'| tr '\n' ' ')
 computeMatrix reference-point -R $out/temp/${base}_pos.bed -a 3000 -b 3000 -S $(echo $samefiles $oppfiles) --referencePoint TSS -o $out/temp/${base}_${type}_pos_TSS.gz --outFileSortedRegions $out/temp/${base}_${type}_pos_TSS.bed --numberOfProcessors max -bs $bin --averageTypeBins sum  --missingDataAsZero 
