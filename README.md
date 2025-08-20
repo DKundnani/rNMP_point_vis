@@ -91,6 +91,8 @@ cd $bw
 mkdir -p $out/temp
 mkdir -p $out/tab
 for type in $celltypes; do
+bref=$(basename $ref)
+base="${bref%.*}"
 awk 'BEGIN{FS=OFS="\t"} {if($6=="+") {print $1,$2,$3}}' $ref > $out/temp/${base}_pos.bed #Change this ONLY IF strand information in any other than 6th column.
 awk 'BEGIN{FS=OFS="\t"} {if($6=="-") {print $1,$2,$3}}' $ref > $out/temp/${base}_neg.bed #Change this ONLY IF strand information in any other than 6th column.
 deeptoolsref &
