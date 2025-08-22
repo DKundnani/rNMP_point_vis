@@ -77,7 +77,7 @@ scripts='path/to/rNMP_point_vis/'
 mkdir -p $bw
 for file in $(ls $bed/*.bed)
 do
-bash $scripts/bedtoEF.sh $file $hggenome $bin bw
+bash $scripts/bedtoEF.sh $file $hggenome $bin $bw
 done
 
 ```
